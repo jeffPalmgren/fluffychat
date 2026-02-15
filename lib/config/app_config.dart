@@ -9,7 +9,10 @@ abstract class AppConfig {
   static String? _applicationWelcomeMessage;
 
   static String? get applicationWelcomeMessage => _applicationWelcomeMessage;
-  static String _defaultHomeserver = 'matrix.org';
+  static String _defaultHomeserver = const String.fromEnvironment(
+    'DEFAULT_HOMESERVER',
+    defaultValue: 'matrix.org',
+  );
 
   static String get defaultHomeserver => _defaultHomeserver;
   static double fontSizeFactor = 1;

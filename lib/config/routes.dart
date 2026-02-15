@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/archive/archive.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat_access_settings/chat_access_settings_controller.dart';
@@ -36,6 +37,7 @@ import 'package:fluffychat/widgets/config_viewer.dart';
 import 'package:fluffychat/widgets/layouts/empty_page.dart';
 import 'package:fluffychat/widgets/layouts/two_column_layout.dart';
 import 'package:fluffychat/widgets/log_view.dart';
+import 'package:fluffychat/widgets/login_loader_page.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
 
@@ -66,7 +68,18 @@ abstract class AppRoutes {
               ? '/rooms'
               : '/home',
     ),
-    GoRoute(
+GoRoute(
+  path: '/home',
+  pageBuilder: (context, state) {
+    return defaultPageBuilder(
+      context,
+      state,
+      const LoginLoaderPage(),
+    );
+  },
+  redirect: loggedInRedirect,
+),
+/*    GoRoute(
       path: '/home',
       pageBuilder: (context, state) => defaultPageBuilder(
         context,
@@ -86,6 +99,7 @@ abstract class AppRoutes {
         ),
       ],
     ),
+  */
     GoRoute(
       path: '/logs',
       pageBuilder: (context, state) => defaultPageBuilder(
