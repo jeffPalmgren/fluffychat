@@ -21,9 +21,9 @@ abstract class AppConfig {
   static const double messageFontSize = 16.0;
   static const bool allowOtherHomeservers = true;
   static const bool enableRegistration = true;
-  static const Color primaryColor = Color(0xFF5625BA);
-  static const Color primaryColorLight = Color(0xFFCCBDEA);
-  static const Color secondaryColor = Color(0xFF41a2bc);
+  static const Color primaryColor = Color(0xFF8B1E1E); // Redoubt accent red
+  static const Color primaryColorLight = Color(0xFFE6E8EB); // Redoubt text-main
+  static const Color secondaryColor = Color(0xFF60A5FA); // Redoubt link blue
   static String _privacyUrl =
       'https://github.com/krille-chan/fluffychat/blob/main/PRIVACY.md';
 
