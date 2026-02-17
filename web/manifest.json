@@ -1,11 +1,11 @@
 {
-    "name": "FluffyChat",
-    "short_name": "FluffyChat",
+    "name": "Redoubt Systems",
+    "short_name": "Redoubt Systems",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "The cutest messenger in the Matrix network",
+    "background_color": "#0b0f14",
+    "theme_color": "#8b1e1e",
+    "description": "Redoubt Systems secure messaging",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
