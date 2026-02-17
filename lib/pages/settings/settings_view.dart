@@ -227,6 +227,26 @@ class SettingsView extends StatelessWidget {
                             : null,
                   ),
                   Divider(color: theme.dividerColor),
+                  if (AppConfig.adminUrl != null)
+                    FutureBuilder<bool>(
+                      future: controller.isServerAdmin,
+                      builder: (context, snapshot) {
+                        if (snapshot.data != true) {
+                          return const SizedBox.shrink();
+                        }
+                        return ListTile(
+                          leading: const Icon(
+                            Icons.admin_panel_settings_outlined,
+                          ),
+                          title: const Text('Admin Panel'),
+                          trailing: const Icon(Icons.open_in_new_outlined),
+                          onTap: () => launchUrlString(
+                            AppConfig.adminUrl!,
+                            mode: LaunchMode.externalApplication,
+                          ),
+                        );
+                      },
+                    ),
                   ListTile(
                     leading: const Icon(Icons.dns_outlined),
                     title: Text(

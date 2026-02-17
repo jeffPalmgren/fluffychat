@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
@@ -27,6 +28,27 @@ class Settings extends StatefulWidget {
 class SettingsController extends State<Settings> {
   Future<Profile>? profileFuture;
   bool profileUpdated = false;
+
+  late final Future<bool> isServerAdmin = _checkServerAdmin();
+
+  Future<bool> _checkServerAdmin() async {
+    try {
+      final client = Matrix.of(context).client;
+      final userId = client.userID;
+      if (userId == null) return false;
+      final response = await client.httpClient.get(
+        client.homeserver!.replace(
+          path:
+              '/_synapse/admin/v1/users/${Uri.encodeComponent(userId)}/admin',
+        ),
+        headers: {'Authorization': 'Bearer ${client.accessToken}'},
+      );
+      final data = jsonDecode(response.body);
+      return data['admin'] == true;
+    } catch (_) {
+      return false;
+    }
+  }
 
   void updateProfile() => setState(() {
         profileUpdated = true;

@@ -6,6 +6,8 @@ abstract class AppConfig {
   static String _applicationName = 'FluffyChat';
 
   static String get applicationName => _applicationName;
+  static String? _adminUrl;
+  static String? get adminUrl => _adminUrl;
   static String? _applicationWelcomeMessage;
 
   static String? get applicationWelcomeMessage => _applicationWelcomeMessage;
@@ -104,6 +106,9 @@ abstract class AppConfig {
     }
     if (json['web_base_url'] is String) {
       _webBaseUrl = json['web_base_url'];
+    }
+    if (json['admin_url'] is String) {
+      _adminUrl = json['admin_url'];
     }
     if (json['render_html'] is bool) {
       renderHtml = json['render_html'];
